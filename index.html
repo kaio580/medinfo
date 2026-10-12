@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MedInfo: informações educativas sobre medicamentos, cuidados, contraindicações e uso seguro.">
+  <meta name="theme-color" content="#0b766e">
+  <title>MedInfo — Informação para usar com segurança</title>
+  <style>
+    :root{--green:#0b766e;--dark:#123b3a;--mint:#e8f7f4;--ink:#183133;--muted:#5c7273;--line:#dce9e7;--white:#fff;--amber:#fff4d6}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#f7fbfa;line-height:1.6}
+    a{color:inherit}.wrap{width:min(1120px,92%);margin:auto}.topbar{background:var(--dark);color:#dff8f4;font-size:.88rem;padding:8px 0}.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.35rem;font-weight:850;letter-spacing:-.04em;color:var(--dark)}.logo{width:38px;height:38px;border-radius:12px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:1.5rem}.navlinks{display:flex;gap:22px;flex-wrap:wrap}.navlinks a{text-decoration:none;color:#385655;font-weight:650;font-size:.94rem}.navlinks a:hover{color:var(--green)}
+    .hero{background:linear-gradient(125deg,#e5f7f2 0%,#f4fbfa 55%,#eaf4ff 100%);padding:68px 0 56px}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:42px;align-items:center}.eyebrow{display:inline-block;background:#d1eee8;color:#08635d;font-weight:800;padding:6px 12px;border-radius:999px;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}.hero h1{font-size:clamp(2.3rem,5vw,4.25rem);line-height:1.06;letter-spacing:-.055em;margin:18px 0}.hero h1 span{color:var(--green)}.hero p{font-size:1.12rem;color:#496565;max-width:650px}.searchbox{margin-top:25px;background:#fff;padding:7px;border:1px solid #cfe2df;border-radius:16px;display:flex;gap:8px;box-shadow:0 10px 30px #0c51400e}.searchbox input{min-width:0;flex:1;border:0;outline:0;padding:12px;font:inherit}.btn{border:0;border-radius:12px;padding:12px 18px;background:var(--green);color:white;font:inherit;font-weight:750;cursor:pointer}.btn:hover{background:#075e58}.hero-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 50px #143f3812}.hero-icon{font-size:3rem}.hero-card h2{margin:8px 0}.hero-card p{font-size:.98rem;margin:8px 0}.small{font-size:.86rem;color:var(--muted)}
+    section{padding:58px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:24px}.section-head h2{font-size:clamp(1.7rem,3vw,2.5rem);letter-spacing:-.04em;margin:0}.section-head p{color:var(--muted);margin:7px 0 0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px}.filter{background:#fff;border:1px solid var(--line);padding:8px 13px;border-radius:999px;cursor:pointer;font:inherit;color:#385655}.filter.active,.filter:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.med-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px;display:flex;flex-direction:column;gap:10px;box-shadow:0 5px 20px #153c3806}.med-card .tag{font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--green)}.med-card h3{margin:0;font-size:1.22rem}.med-card p{margin:0;color:#536a6a}.med-card button{align-self:flex-start;margin-top:auto;background:var(--mint);color:var(--dark);border:0;padding:9px 12px;border-radius:10px;font-weight:750;cursor:pointer}.med-card button:hover{background:#cdebe4}.empty{grid-column:1/-1;padding:30px;text-align:center;border:1px dashed #aac9c4;border-radius:16px;color:var(--muted)}
+    .notice{background:var(--amber);border:1px solid #f0d992;border-radius:18px;padding:22px;display:flex;gap:16px;align-items:flex-start}.notice .symbol{font-size:1.7rem}.notice h3{margin:0 0 4px}.notice p{margin:0;color:#67562a}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.info{padding:22px;background:#fff;border:1px solid var(--line);border-radius:18px}.info .icon{font-size:1.7rem}.info h3{margin:8px 0}.info p{margin:0;color:var(--muted)}
+    .sources{background:#eef7f5}.source-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.source{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;text-decoration:none}.source strong{display:block;color:var(--dark);margin-bottom:5px}.source span{color:var(--muted);font-size:.9rem}.source:hover{border-color:var(--green)}
+    footer{background:var(--dark);color:#d9eeeb;padding:30px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-row p{margin:4px 0}.disclaimer{font-size:.88rem;max-width:760px;color:#c4dfda}
+    dialog{width:min(650px,92%);border:0;border-radius:22px;padding:0;box-shadow:0 25px 90px #0005;color:var(--ink)}dialog::backdrop{background:#092b2acc}.modal-head{padding:22px 25px;background:var(--mint);display:flex;justify-content:space-between;gap:15px;align-items:center}.modal-head h2{margin:0}.close{border:0;border-radius:10px;padding:7px 11px;background:#fff;cursor:pointer;font-size:1.1rem}.modal-body{padding:24px}.modal-body h3{margin-bottom:4px}.modal-body p{margin-top:4px;color:#4d6665}.modal-warning{background:#fff4d6;padding:14px;border-radius:12px;color:#5d4b1c}
+    @media(max-width:800px){.hero-grid{grid-template-columns:1fr}.hero-card{max-width:500px}.cards,.info-grid,.source-list{grid-template-columns:repeat(2,1fr)}.nav{align-items:flex-start;padding:15px 0;flex-direction:column}.navlinks{gap:14px}}
+    @media(max-width:520px){.cards,.info-grid,.source-list{grid-template-columns:1fr}.hero{padding:45px 0}.searchbox{flex-direction:column}.searchbox .btn{width:100%}.section-head{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap"><span>Informação em saúde, com responsabilidade</span><span>Conteúdo educativo • Brasil</span></div></div>
+  <header><div class="wrap nav">
+    <a class="brand" href="#" aria-label="MedInfo página inicial"><span class="logo">+</span> MedInfo</a>
+    <nav class="navlinks" aria-label="Navegação principal"><a href="#medicamentos">Medicamentos</a><a href="#cuidados">Cuidados</a><a href="#emergencia">Emergências</a><a href="#fontes">Fontes confiáveis</a></nav>
+  </div></header>
+  <main>
+    <section class="hero"><div class="wrap hero-grid">
+      <div><span class="eyebrow">Conhecimento que protege</span><h1>Use medicamentos com <span>mais segurança.</span></h1>
+        <p>Encontre orientações educativas sobre cuidados, contraindicações e riscos do uso inadequado. Informação clara para ajudar você a conversar com um profissional de saúde.</p>
+        <form class="searchbox" id="searchForm" role="search"><input id="searchInput" type="search" placeholder="Pesquisar medicamento ou cuidado..." aria-label="Pesquisar medicamento ou cuidado"><button class="btn" type="submit">Pesquisar</button></form>
+        <p class="small">Este site não faz diagnóstico nem indica tratamentos personalizados.</p>
+      </div>
+      <aside class="hero-card"><div class="hero-icon">🩺</div><h2>Na dúvida, confirme.</h2><p>Confira a bula e converse com um médico ou farmacêutico antes de iniciar, interromper ou combinar medicamentos.</p><p class="small">Medicamentos podem ter riscos diferentes conforme a idade, condições de saúde e outros produtos utilizados.</p></aside>
+    </div></section>
+
+    <section id="medicamentos"><div class="wrap">
+      <div class="section-head"><div><h2>Guia de informações</h2><p>Exemplos educativos — consulte sempre a bula específica do produto.</p></div></div>
+      <div class="filters" aria-label="Filtrar conteúdo">
+        <button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Dor e febre">Dor e febre</button><button class="filter" data-filter="Alergia">Alergia</button><button class="filter" data-filter="Antibióticos">Antibióticos</button><button class="filter" data-filter="Cuidados gerais">Cuidados gerais</button>
+      </div>
+      <div class="cards" id="medCards" aria-live="polite"></div>
+    </div></section>
+
+    <section id="cuidados"><div class="wrap">
+      <div class="section-head"><div><h2>Cuidados importantes</h2><p>Hábitos que ajudam a reduzir riscos no uso de medicamentos.</p></div></div>
+      <div class="info-grid">
+        <article class="info"><div class="icon">📄</div><h3>Leia a bula</h3><p>Confira indicação, modo de uso, advertências, validade e possíveis interações do produto específico.</p></article>
+        <article class="info"><div class="icon">🧪</div><h3>Não misture por conta própria</h3><p>Medicamentos, álcool, suplementos e plantas medicinais podem interagir. Pergunte a um profissional.</p></article>
+        <article class="info"><div class="icon">🔒</div><h3>Guarde corretamente</h3><p>Mantenha na embalagem original, conforme a bula, fora do alcance de crianças e animais.</p></article>
+        <article class="info"><div class="icon">🚫</div><h3>Não compartilhe</h3><p>Um medicamento prescrito para outra pessoa pode não ser adequado para você.</p></article>
+        <article class="info"><div class="icon">⏱️</div><h3>Respeite as orientações</h3><p>Não dobre doses esquecidas nem altere ou interrompa um tratamento sem orientação profissional.</p></article>
+        <article class="info"><div class="icon">♻️</div><h3>Descarte com segurança</h3><p>Procure pontos de coleta de medicamentos; evite descartar sobras no vaso sanitário ou na pia.</p></article>
+      </div>
+    </div></section>
+
+    <section id="emergencia"><div class="wrap"><div class="notice"><div class="symbol">🆘</div><div><h3>Suspeita de intoxicação ou dose incorreta?</h3><p>Não espere aparecerem sintomas e não provoque vômito nem ofereça receitas caseiras. Procure orientação urgente. No Brasil, ligue para o Disque-Intoxicação: <strong>0800 722 6001</strong>. Em uma emergência grave, ligue para o SAMU: <strong>192</strong>. Tenha a embalagem do produto por perto, se possível.</p></div></div></div></section>
+
+    <section class="sources" id="fontes"><div class="wrap">
+      <div class="section-head"><div><h2>Fontes confiáveis</h2><p>Consulte órgãos oficiais e informações do fabricante.</p></div></div>
+      <div class="source-list">
+        <a class="source" href="https://www.gov.br/anvisa/pt-br" target="_blank" rel="noopener noreferrer"><strong>Anvisa</strong><span>Regulação, alertas e informações sobre medicamentos.</span></a>
+        <a class="source" href="https://consultas.anvisa.gov.br/#/bulario/" target="_blank" rel="noopener noreferrer"><strong>Bulário eletrônico</strong><span>Consulte bulas de medicamentos registrados.</span></a>
+        <a class="source" href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener noreferrer"><strong>Ministério da Saúde</strong><span>Orientações e informações oficiais de saúde.</span></a>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="wrap footer-row"><div><a class="brand" href="#" style="color:white"><span class="logo" style="background:#fff;color:#0b766e">+</span> MedInfo</a><p class="small" style="color:#c4dfda">Informação para escolhas mais seguras.</p></div><p class="disclaimer"><strong>Aviso:</strong> este projeto tem finalidade exclusivamente educativa. Não substitui consulta, diagnóstico, prescrição nem a bula oficial. As informações resumidas não cobrem todos os riscos de cada produto; confirme os detalhes com um profissional de saúde.</p></div></footer>
+
+  <dialog id="medDialog" aria-labelledby="dialogTitle"><div class="modal-head"><h2 id="dialogTitle">Informações</h2><button class="close" id="closeDialog" aria-label="Fechar">✕</button></div><div class="modal-body" id="dialogBody"></div></dialog>
+  <script>
+    const medicines = [
+      {name:"Paracetamol",category:"Dor e febre",summary:"Usado para aliviar dor e reduzir febre em situações apropriadas.",use:"Pode ser indicado para dor e febre, conforme a bula e orientação profissional.",care:"O excesso pode causar lesão grave no fígado. Confira se outros produtos que você usa também contêm paracetamol. Pessoas com doença hepática ou consumo frequente de álcool devem buscar orientação profissional.",avoid:"Não ultrapasse a dose da bula ou a prescrita e não combine produtos com o mesmo princípio ativo sem orientação.",source:"Consulte a bula do produto na Anvisa."},
+      {name:"Ibuprofeno",category:"Dor e febre",summary:"Anti-inflamatório que pode aliviar dor, inflamação e febre.",use:"É indicado apenas para situações previstas na bula e considerando os riscos individuais.",care:"Pode aumentar o risco de problemas no estômago, sangramento e nos rins. Pode não ser adequado para pessoas com certas doenças, para quem usa alguns anticoagulantes ou durante determinadas fases da gravidez.",avoid:"Não combine com outros anti-inflamatórios por conta própria. Peça orientação a um profissional, especialmente se houver doenças crônicas ou gravidez.",source:"Consulte a bula do produto na Anvisa."},
+      {name:"Loratadina",category:"Alergia",summary:"Antialérgico usado para aliviar alguns sintomas de alergia.",use:"Pode ser utilizada para sintomas alérgicos quando indicada na bula.",care:"Podem ocorrer efeitos indesejados. Idade, problemas no fígado ou rins e outros medicamentos podem mudar as recomendações.",avoid:"Não presuma que todo antialérgico é igual ou adequado para qualquer pessoa. Confira a apresentação e a bula.",source:"Consulte a bula do produto na Anvisa."},
+      {name:"Amoxicilina",category:"Antibióticos",summary:"Antibiótico usado para determinadas infecções bacterianas.",use:"Deve ser utilizada somente quando prescrita para a situação clínica correta.",care:"Pode causar reações alérgicas e outros efeitos adversos. Antibióticos não tratam gripes e resfriados causados por vírus.",avoid:"Não use sobras, não compartilhe e não inicie por conta própria. Siga as orientações do profissional que prescreveu.",source:"Consulte a bula do produto na Anvisa."},
+      {name:"AAS (ácido acetilsalicílico)",category:"Dor e febre",summary:"Tem usos diferentes conforme a dose e a indicação; não é adequado para todos.",use:"A indicação varia conforme a apresentação e a condição de saúde.",care:"Pode aumentar o risco de sangramento e irritar o estômago. Há situações e faixas etárias em que seu uso exige cuidados específicos.",avoid:"Não dê a crianças ou adolescentes com infecções virais sem orientação médica. Não comece nem interrompa uso prescrito para o coração sem falar com o profissional responsável.",source:"Consulte a bula do produto na Anvisa."},
+      {name:"Vitaminas e suplementos",category:"Cuidados gerais",summary:"Nem todo suplemento é necessário ou livre de riscos.",use:"A necessidade depende da alimentação, saúde, idade e avaliação profissional.",care:"Doses elevadas de algumas vitaminas e minerais podem causar efeitos adversos ou interagir com medicamentos.",avoid:"Não tome doses altas nem combine vários suplementos sem orientação. Verifique procedência e registro quando aplicável.",source:"Consulte um profissional de saúde e fontes oficiais."}
+    ];
+    const cards = document.getElementById("medCards");
+    const searchInput = document.getElementById("searchInput");
+    let activeFilter = "Todos";
+    function render(){
+      const term = searchInput.value.trim().toLocaleLowerCase("pt-BR");
+      const found = medicines.filter(m => (activeFilter === "Todos" || m.category === activeFilter) && (m.name+" "+m.category+" "+m.summary+" "+m.care).toLocaleLowerCase("pt-BR").includes(term));
+      cards.innerHTML = "";
+      if(!found.length){cards.innerHTML='<div class="empty">Nenhum resultado encontrado. Tente outro termo ou escolha “Todos”.</div>';return;}
+      found.forEach((m)=>{
+        const article=document.createElement("article");article.className="med-card";
+        const tag=document.createElement("span");tag.className="tag";tag.textContent=m.category;
+        const title=document.createElement("h3");title.textContent=m.name;
+        const desc=document.createElement("p");desc.textContent=m.summary;
+        const button=document.createElement("button");button.type="button";button.textContent="Ver cuidados →";button.addEventListener("click",()=>showDetails(m));
+        article.append(tag,title,desc,button);cards.appendChild(article);
+      });
+    }
+    function showDetails(m){
+      document.getElementById("dialogTitle").textContent=m.name;
+      const body=document.getElementById("dialogBody");body.replaceChildren();
+      [["Para que serve",m.use],["Cuidados e riscos",m.care],["O que evitar",m.avoid],["Fonte",m.source]].forEach(([heading,content])=>{
+        const h=document.createElement("h3");h.textContent=heading;
+        const p=document.createElement("p");p.textContent=content;body.append(h,p);
+      });
+      const note=document.createElement("div");note.className="modal-warning";note.textContent="A informação é geral. A bula do produto específico e a orientação de um profissional de saúde devem prevalecer.";body.append(note);
+      document.getElementById("medDialog").showModal();
+    }
+    document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
+      document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");activeFilter=btn.dataset.filter;render();
+    }));
+    document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();render();document.getElementById("medicamentos").scrollIntoView({behavior:"smooth"});});
+    searchInput.addEventListener("input",render);
+    document.getElementById("closeDialog").addEventListener("click",()=>document.getElementById("medDialog").close());
+    document.getElementById("medDialog").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close();});
+    render();
+  </script>
+</body>
+</html>
